@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines a BasicAuth class that inherits from Auth class
+Defines a BasicAuth class 
 """
 import base64
 from typing import Tuple, TypeVar, Union
@@ -11,13 +11,13 @@ from api.v1.views.users import User
 
 class BasicAuth(Auth):
     """
-    Basic Authentication class implementation
+    Basic Authentication class implement
     """
     def extract_base64_authorization_header(
         self, authorization_header: str
     ) -> str:
         """
-        Extract Authorization header value
+        documentation
         """
         if (
             authorization_header is None
@@ -31,7 +31,7 @@ class BasicAuth(Auth):
         self, base64_authorization_header: str
     ) -> str:
         """
-        Base64 encode authorization_header
+        Base64 
         """
         if (
             base64_authorization_header is None
@@ -48,7 +48,7 @@ class BasicAuth(Auth):
         self, decoded_base64_authorization_header: str
     ) -> Tuple[str]:
         """
-        Extract email username and password
+         email username and password
         """
         if (
             decoded_base64_authorization_header is None
@@ -63,7 +63,7 @@ class BasicAuth(Auth):
         self, user_email: str, user_pwd: str
     ) -> Union[TypeVar('User'), None]:
         """
-        Gets the User instance based on given email and password
+        given email and password
         """
         if (
             user_email is None or type(user_email) != str
@@ -80,7 +80,7 @@ class BasicAuth(Auth):
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
-        Loads the current_user object
+        current_user object
         """
         email, password = self.extract_user_credentials(
             self.decode_base64_authorization_header(

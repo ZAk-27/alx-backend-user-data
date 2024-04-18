@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module of Users views
+""" Module docs
 """
 import os
 from flask import (
@@ -18,8 +18,8 @@ def session_login() -> str:
       - password
     Return:
       - 200 User object JSON represented
-      - 400 if either email and password are missing
-      - 404 if a user with the email is not found
+      - 400 if either email and password  missing
+      - 404 if a user with the email not found
     """
     email, password = request.form.get('email'), request.form.get('password')
     if email is None or '':
@@ -45,7 +45,7 @@ def session_login() -> str:
 def session_logout(user_id: str = None) -> str:
     """ DELETE /api/v1/auth_session/logout
     Return:
-      - 200 empty JSON is user session has been deleted and user logged out
+      - 200 empty JSON is user has been deleted and user logged out
       - 404 if request object has not session id
     """
     from api.v1.app import auth

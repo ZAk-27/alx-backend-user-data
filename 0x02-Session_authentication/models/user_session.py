@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines a UserSession class
+Defining a UserSession class
 """
 from datetime import datetime
 
@@ -13,7 +13,7 @@ class UserSession(Base):
     """
     def __init__(self, *args: list, **kwargs: dict):
         """
-        Instialize a User Session instance
+        User Session instance
         """
         super().__init__(*args, **kwargs)
         self.user_id = kwargs.get('user_id')

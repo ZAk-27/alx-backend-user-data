@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-A module: Defines an template class for all template
-for all authentication system implemented in this application
+A module: Defines an template class defining
+for all authentication system 
 """
 import os
 from flask import request
@@ -19,7 +19,7 @@ class Auth:
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
-        Requires authentication on every request
+        authentication request
         """
         if (
             path is None
@@ -38,7 +38,7 @@ class Auth:
 
     def authorization_header(self, request=None) -> Union[str, None]:
         """
-        Extract authorization header
+        documentation
         """
         auth = request.headers.get('Authorization', None) if request else None
         if request is None or auth is None:
@@ -47,13 +47,13 @@ class Auth:
 
     def current_user(self, request=None) -> Union[TypeVar('User'), None]:
         """
-        Holds the current authenticated logged in user
+        documentation
         """
         return None
 
     def session_cookie(self, request=None) -> Union[str, None]:
         """
-        Get a cookie value from a request object
+        documentation
         """
         if request is None:
             return None

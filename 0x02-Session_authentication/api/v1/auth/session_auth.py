@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines a SessionAuth class that inherits from Auth class
+Defining a SessionAuth class 
 """
 import uuid
 from typing import (
@@ -13,13 +13,13 @@ from models.user import User
 
 class SessionAuth(Auth):
     """
-    Session Authentication class implementation
+    Authentication class implement
     """
     user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> Union[str, None]:
         """
-        Create session id from random string
+        session id from random string
         """
         if user_id is None or type(user_id) != str:
             return None
@@ -31,7 +31,7 @@ class SessionAuth(Auth):
         self, session_id: str = None
     ) -> Union[str, None]:
         """
-        Get user id from given session id
+        Get user id
         """
         if session_id is None or type(session_id) != str:
             return None
@@ -39,7 +39,7 @@ class SessionAuth(Auth):
 
     def current_user(self, request=None) -> Union[TypeVar('User'), None]:
         """
-        Holds the current authenticated logged in user
+        current authenticated logged in user
         """
         User.load_from_file()
         return User.get(
@@ -48,7 +48,7 @@ class SessionAuth(Auth):
 
     def destroy_session(self, request=None) -> bool:
         """
-        Deletes the user session / logout
+        logout
         """
         if request is None:
             return False

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Route module for the API
+API route model
 """
 from os import getenv
 from api.v1.views import app_views
@@ -36,7 +36,7 @@ elif auth_type == 'auth':
 @app.before_request
 def request_filter() -> str:
     """
-    Checks if the requested path requires authentication
+    authentication cheking
     """
     excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/',
                       '/api/v1/forbidden/', '/api/v1/auth_session/login/']
@@ -54,21 +54,21 @@ def request_filter() -> str:
 
 @app.errorhandler(401)
 def unauthorized(error) -> str:
-    """ Unauthorized error handler
+    """ documntation
     """
     return jsonify({"error": "Unauthorized"}), 401
 
 
 @app.errorhandler(403)
 def unauthorized(error) -> str:
-    """ Forbidden error handler
+    """ documentation
     """
     return jsonify({"error": "Forbidden"}), 403
 
 
 @app.errorhandler(404)
 def not_found(error) -> str:
-    """ Not found handler
+    """ documentation
     """
     return jsonify({"error": "Not found"}), 404
 

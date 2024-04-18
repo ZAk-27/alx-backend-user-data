@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module of Users views
+""" Module documntation
 """
 from api.v1.views import app_views
 from flask import abort, jsonify, request
@@ -10,7 +10,7 @@ from models.user import User
 def view_all_users() -> str:
     """ GET /api/v1/users
     Return:
-      - list of all User objects JSON represented
+      - list of all User JSON represented
     """
     all_users = [user.to_json() for user in User.all()]
     return jsonify(all_users)
@@ -23,7 +23,7 @@ def view_one_user(user_id: str = None) -> str:
       - User ID
     Return:
       - User object JSON represented
-      - 404 if the User ID doesn't exist
+      - 404 if the User ID not exist
     """
     if user_id is None:
         abort(404)
@@ -45,7 +45,7 @@ def delete_user(user_id: str = None) -> str:
       - User ID
     Return:
       - empty JSON is the User has been correctly deleted
-      - 404 if the User ID doesn't exist
+      - 404 if the User ID not exist
     """
     if user_id is None:
         abort(404)
@@ -62,10 +62,10 @@ def create_user() -> str:
     JSON body:
       - email
       - password
-      - last_name (optional)
+      - last_name 
       - first_name (optional)
     Return:
-      - User object JSON represented
+      - User object
       - 400 if can't create the new User
     """
     rj = None
@@ -101,7 +101,7 @@ def update_user(user_id: str = None) -> str:
       - User ID
     JSON body:
       - last_name (optional)
-      - first_name (optional)
+      - first_name
     Return:
       - User object JSON represented
       - 404 if the User ID doesn't exist

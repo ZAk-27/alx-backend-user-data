@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-""" User module
+""" module
 """
 import hashlib
 from models.base import Base
 
 
 class User(Base):
-    """ User class
+    """ module User class
     """
 
     def __init__(self, *args: list, **kwargs: dict):
@@ -20,13 +20,13 @@ class User(Base):
 
     @property
     def password(self) -> str:
-        """ Getter of the password
+        """ Getting the password
         """
         return self._password
 
     @password.setter
     def password(self, pwd: str):
-        """ Setter of a new password: encrypt in SHA256
+        """ Setting of a new password
         """
         if pwd is None or type(pwd) is not str:
             self._password = None
@@ -44,7 +44,7 @@ class User(Base):
         return hashlib.sha256(pwd_e).hexdigest().lower() == self.password
 
     def display_name(self) -> str:
-        """ Display User name based on email/first_name/last_name
+        """ Displaying User name 
         """
         if self.email is None and self.first_name is None \
                 and self.last_name is None:

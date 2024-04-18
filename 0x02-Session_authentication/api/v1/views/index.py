@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Module of Index views
+""" Index views
 """
 from flask import jsonify, abort
 from api.v1.views import app_views
@@ -9,7 +9,7 @@ from api.v1.views import app_views
 def status() -> str:
     """ GET /api/v1/status
     Return:
-      - the status of the API
+      - the API statue
     """
     return jsonify({"status": "OK"})
 
@@ -18,7 +18,7 @@ def status() -> str:
 def stats() -> str:
     """ GET /api/v1/stats
     Return:
-      - the number of each objects
+      - the numb of each objects
     """
     from models.user import User
     stats = {}
@@ -30,7 +30,7 @@ def stats() -> str:
 def unauthorized() -> str:
     """ GET /api/v1/unauthorized[/]
     Returns:
-      - an unauthorized error message
+      -  error message
     """
     abort(401)
 
@@ -39,6 +39,6 @@ def unauthorized() -> str:
 def forbidden() -> str:
     """ GET /api/v1/forbidden[/]
     Returns:
-      - a forbidden error message
+      -  error message
     """
     abort(403)

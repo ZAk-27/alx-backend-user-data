@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines SessionExpAuth class that implements session expiration
+Defining SessionExpAuth class 
 """
 import os
 from datetime import datetime, timedelta
@@ -11,11 +11,11 @@ from api.v1.auth.session_auth import SessionAuth
 
 class SessionExpAuth(SessionAuth):
     """
-    Session Authentication class with expiration
+    Session Authentication class 
     """
     def __init__(self):
         """
-        Instialize a SessionExpAuth instance
+        documntation
         """
         super().__init__()
         try:
@@ -26,7 +26,7 @@ class SessionExpAuth(SessionAuth):
 
     def create_session(self, user_id=None) -> Union[str, None]:
         """
-        Create session id from random string
+        Create session id 
         """
         session_id = super().create_session(user_id)
         if session_id is None:
@@ -37,7 +37,7 @@ class SessionExpAuth(SessionAuth):
 
     def user_id_for_session_id(self, session_id=None) -> Union[str, None]:
         """
-        Get user id from given session id
+        Get user id 
         """
         if session_id is None:
             return None

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Defines Session Auth class that uses a file storage DB
+Defining Session Auth class that uses a file storage DB
 """
 from datetime import datetime, timedelta
 from typing import Union
@@ -11,11 +11,11 @@ from api.v1.auth.session_exp_auth import SessionExpAuth
 
 class SessionDBAuth(SessionExpAuth):
     """
-    Database Session Authentication implementation
+    Database Session 
     """
     def create_session(self, user_id=None) -> Union[str, None]:
         """
-        Create session id from random string
+        Creating session id
         """
         if user_id is None or type(user_id) != str:
             return None
@@ -28,7 +28,7 @@ class SessionDBAuth(SessionExpAuth):
 
     def user_id_for_session_id(self, session_id=None) -> Union[str, None]:
         """
-        Get user id based on session id from DB
+        Get user id 
         """
         users_session = UserSession.search({'session_id': session_id})
         if users_session != []:
@@ -39,7 +39,7 @@ class SessionDBAuth(SessionExpAuth):
 
     def destroy_session(self, request=None) -> bool:
         """
-        Deletes the user session from DB / logout user
+         logout user
         """
         if request is None:
             return False

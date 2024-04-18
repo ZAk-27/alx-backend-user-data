@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Base module
+""" Base module docu
 """
 from datetime import datetime
 from typing import TypeVar, List, Iterable
@@ -13,11 +13,11 @@ DATA = {}
 
 
 class Base():
-    """ Base class
+    """ Base class docu
     """
 
     def __init__(self, *args: list, **kwargs: dict):
-        """ Initialize a Base instance
+        """a Base instance
         """
         s_class = str(self.__class__.__name__)
         if DATA.get(s_class) is None:
@@ -36,7 +36,7 @@ class Base():
             self.updated_at = datetime.utcnow()
 
     def __eq__(self, other: TypeVar('Base')) -> bool:
-        """ Equality
+        """ docu
         """
         if type(self) != type(other):
             return False
@@ -45,7 +45,7 @@ class Base():
         return (self.id == other.id)
 
     def to_json(self, for_serialization: bool = False) -> dict:
-        """ Convert the object a JSON dictionary
+        """ Convert the object a JSON dictionary docu
         """
         result = {}
         for key, value in self.__dict__.items():
@@ -59,7 +59,7 @@ class Base():
 
     @classmethod
     def load_from_file(cls):
-        """ Load all objects from file
+        """ docum
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)
@@ -74,7 +74,7 @@ class Base():
 
     @classmethod
     def save_to_file(cls):
-        """ Save all objects to file
+        """objects to file
         """
         s_class = cls.__name__
         file_path = ".db_{}.json".format(s_class)
@@ -86,7 +86,7 @@ class Base():
             json.dump(objs_json, f)
 
     def save(self):
-        """ Save current object
+        """ Save object
         """
         s_class = self.__class__.__name__
         self.updated_at = datetime.utcnow()
@@ -96,6 +96,7 @@ class Base():
     def remove(self):
         """ Remove object
         """
+        
         s_class = self.__class__.__name__
         if DATA[s_class].get(self.id) is not None:
             del DATA[s_class][self.id]
@@ -103,7 +104,7 @@ class Base():
 
     @classmethod
     def count(cls) -> int:
-        """ Count all objects
+        """ Counting all objects
         """
         s_class = cls.__name__
         return len(DATA[s_class].keys())
@@ -116,14 +117,14 @@ class Base():
 
     @classmethod
     def get(cls, id: str) -> TypeVar('Base'):
-        """ Return one object by ID
+        """ one object by ID
         """
         s_class = cls.__name__
         return DATA[s_class].get(id)
 
     @classmethod
     def search(cls, attributes: dict = {}) -> List[TypeVar('Base')]:
-        """ Search all objects with matching attributes
+        """ Searching all objects with matching attributes
         """
         s_class = cls.__name__
 
